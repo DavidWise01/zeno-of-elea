@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zeno of Elea — the paradoxes of motion</title>
+<meta name="description" content="LOGIKĒ · the front (c. 490 BCE) — Zeno of Elea, who defended Parmenides with the first great PROOFS BY CONTRADICTION: paradoxes showing that motion and plurality lead to absurdity. Achilles can never catch the tortoise; an arrow in flight is, at each instant, at rest. The resolution waited two thousand years for the calculus: an infinite sum of ever-smaller steps can have a finite total (1/2 + 1/4 + 1/8 + … = 1). Live: run Achilles and the tortoise and watch the infinite series converge to the catch-up point. Honest: the paradoxes were 'dissolved' by limits, but they were deep, and supertasks are still argued. David Lee Wise, two-layer honest.">
+<style>
+  :root{--bg:#0c0f17;--panel:#121622;--panel2:#19202f;--edge:#2a3346;--ink:#ede6d6;--dim:#b3ad9a;--faint:#7c7660;
+    --ochre:#d9b66a;--ochre2:#f0d79a;--proof:#5ad1ff;--proof2:#a7e6ff;--one:#7fe0a0;--zero:#fb7185;--amber:#fbbf24;--ember:#fb923c;
+    --mono:'SFMono-Regular',ui-monospace,'Cascadia Code',Menlo,Consolas,monospace;--serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.58;background-image:radial-gradient(1100px 560px at 75% -10%,#1c2436 0%,transparent 55%),radial-gradient(900px 500px at 0% 100%,#14110a 0%,transparent 55%);}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 26px 90px}
+  header{border-bottom:1px solid var(--edge);padding-bottom:22px;margin-bottom:24px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--ochre);opacity:.95}
+  h1{font-family:Georgia,serif;font-size:38px;line-height:1.08;margin:.3em 0 .14em;font-weight:600}h1 em{color:var(--ochre2);font-style:italic}
+  .who{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.04em}
+  .sub{color:var(--dim);font-size:16px;max-width:74ch;margin-top:14px}.sub b{color:var(--ink)}
+  .verdicts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:22px 0}@media(max-width:720px){.verdicts{grid-template-columns:1fr}}
+  .vc{border:1px solid var(--edge);border-radius:11px;padding:13px 15px;border-top-width:3px;background:rgba(18,22,34,.6)}
+  .vc .badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em}
+  .vc.s{border-top-color:var(--one)}.vc.s .badge{color:var(--one)} .vc.m{border-top-color:var(--amber)}.vc.m .badge{color:var(--amber)} .vc.f{border-top-color:var(--ember)}.vc.f .badge{color:var(--ember)}
+  .vc p{font-size:12px;color:var(--dim);margin:6px 0 0;line-height:1.45}.vc p b{color:var(--ink)}
+  section{margin:36px 0}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--ochre2);border-left:2px solid var(--ochre);padding-left:11px;margin:0 0 6px}
+  .lede{color:var(--dim);font-size:15px;margin:0 0 18px;max-width:80ch}
+  .panel{background:linear-gradient(180deg,var(--panel),#0a0d14);border:1px solid var(--edge);border-radius:14px;padding:20px;box-shadow:0 24px 60px -40px #000}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  button{font-family:var(--mono);font-size:12px;color:var(--ink);background:#1a2030;border:1px solid var(--edge);border-radius:8px;padding:8px 12px;cursor:pointer}button:hover{background:#222b3e;border-color:var(--ochre)}
+  button.on{border-color:var(--ochre);background:#2a2414;color:var(--ochre2)}
+  svg{display:block;max-width:100%}
+  .ser{display:flex;align-items:flex-end;gap:3px;height:64px;margin-top:14px;border-bottom:1px solid var(--edge);padding-bottom:0}
+  .seg{flex:0 0 auto;background:var(--proof);opacity:.8;border-radius:2px 2px 0 0;min-width:2px;transition:.2s}
+  .stat{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:13px;color:var(--dim);margin-top:12px;justify-content:center}
+  .stat b{color:var(--ochre2)}.stat .lim{color:var(--one)}
+  .note{color:var(--dim);font-size:13.5px;border-left:2px solid var(--edge);padding-left:13px;margin:16px 0 0}.note b{color:var(--ink)}
+  .para{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:8px}@media(max-width:680px){.para{grid-template-columns:1fr}}
+  .pc{border:1px solid var(--edge);border-radius:10px;padding:12px 14px;background:rgba(0,0,0,.14)}.pc b{color:var(--ochre2);font-family:var(--mono);font-size:11px}.pc p{font-size:12.5px;color:var(--dim);margin:6px 0 0}
+  footer{margin-top:44px;border-top:1px solid var(--edge);padding-top:18px;color:var(--faint);font-family:var(--mono);font-size:11px;line-height:1.7}
+  footer a,.bar2 a{color:var(--ochre)}.bar2{font-family:var(--mono);font-size:11.5px;margin-bottom:16px}.bar2 a{text-decoration:none;border-bottom:1px dotted #4a4126}
+  code{font-family:var(--mono);color:var(--ochre2);background:#15120a;padding:1px 5px;border-radius:5px}
+  blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--ochre);color:var(--ink);font-style:italic;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bar2"><a href="https://davidwise01.github.io/ud0/">◄ UD0</a> &nbsp; <a href="https://davidwise01.github.io/parmenides/">← Parmenides</a> &nbsp; LOGIKĒ · the front</div>
+<header>
+  <div class="kicker">LOGIKĒ · the front · between Thales and Aristotle</div>
+  <h1><em>Zeno</em> of Elea</h1>
+  <div class="who">c. 490 – 430 BCE · Elea · pupil of Parmenides · "inventor of dialectic" (Aristotle)</div>
+  <div class="sub">[[parmenides]] argued that motion and plurality are illusions; his pupil Zeno defended him with a new and devastating weapon — the <b>paradox</b>, a proof by contradiction aimed at common sense itself. Grant that space and time are infinitely divisible, Zeno says, and watch <b>motion dissolve into absurdity</b>: swift Achilles can never overtake a tortoise with a head start, because each time he reaches where it was, it has crept a little further; an arrow in flight, examined at any single instant, is motionless — so how does it ever move? These were the first arguments to take <b>infinity</b> seriously, and they were not truly answered for two thousand years — until the <b>calculus</b> showed that an unending sum of shrinking steps can add up to a finite whole.</div>
+</header>
+<div class="verdicts">
+  <div class="vc s"><span class="badge">✓ STRONG</span><p><b>Deep, and method-defining.</b> Zeno gave the first systematic proofs by contradiction (Aristotle calls him the inventor of dialectic), and the first serious confrontation with the infinite — problems that drove the eventual rigor of limits and the calculus.</p></div>
+  <div class="vc m"><span class="badge">◐ "DISSOLVED," NOT TRIVIAL</span><p><b>Answered by limits.</b> The convergent-series resolution (½+¼+…=1) handles Achilles and the dichotomy cleanly. But it took Cauchy and Weierstrass to make it rigorous, and the arrow and "supertasks" still feed live debate in philosophy.</p></div>
+  <div class="vc f"><span class="badge">◔ A DEFENCE, NOT A SYSTEM</span><p><b>Polemics, in service of Parmenides.</b> Zeno's paradoxes argue <em>against</em> motion/plurality to protect his teacher's One; they're brilliant reductios, not a positive theory. And we have them only second-hand, mostly via Aristotle.</p></div>
+</div>
+
+<section>
+  <h2>I · Achilles and the tortoise — run the infinity</h2>
+  <p class="lede">The tortoise gets a head start; Achilles runs ten times faster. By the time he reaches the tortoise's start, it has moved a little; by the time he reaches <em>that</em> spot, it has moved again — forever. Zeno concludes he <b>never</b> catches it. Press run and watch the stages: each is real, there are infinitely many — yet their lengths shrink so fast that their <b>total is finite</b>, and Achilles passes the tortoise at a definite point.</p>
+  <div class="panel">
+    <div class="controls"><button id="run">run ▶</button><button id="step">one stage ▸</button><button id="reset">reset ↺</button></div>
+    <svg id="race" viewBox="0 0 520 120" width="520" height="120"></svg>
+    <div class="ser" id="ser"></div>
+    <div class="stat">
+      <span>stages run <b id="sN">0</b></span>
+      <span>distance covered <b id="sD">0</b></span>
+      <span class="lim">catch-up point → <b class="lim" id="sLim"></b></span>
+    </div>
+    <div class="note">Infinitely many stages, but the distances are a <b>geometric series</b> — 1 + 1/10 + 1/100 + … — and it <em>converges</em>: it sums to 10/9 of the head start, a finite number Achilles reaches in finite time. ⚑ Zeno's error wasn't logic, it was an unspoken assumption: that infinitely many steps must take infinitely long. They needn't. Untangling exactly why took the limit concept — [[georg-cantor]]'s infinities and the rigor of the calculus — so Zeno's "absurdity" turns out to be the first deep question about the <b>actual infinite</b>, not a mistake.</div>
+  </div>
+  <blockquote>"That which is in locomotion must arrive at the half-way stage before it arrives at the goal." <span style="color:var(--faint);font-style:normal;font-size:12px">— Zeno's Dichotomy, via Aristotle</span></blockquote>
+</section>
+
+<section>
+  <h2>II · The three great paradoxes</h2>
+  <div class="para">
+    <div class="pc"><b>THE DICHOTOMY</b><p>To go anywhere you must first go halfway, but first half of that, and so on — infinitely many sub-journeys to complete before you even start. So motion can't begin.</p></div>
+    <div class="pc"><b>ACHILLES &amp; THE TORTOISE</b><p>The swift can never catch the slow with a head start: each time he reaches its last position, it has moved on. Infinitely many catch-ups to make.</p></div>
+    <div class="pc"><b>THE ARROW</b><p>At any single instant a flying arrow occupies exactly its own length and is at rest. If it's at rest at every instant, when does it move? Motion vanishes into a sum of still frames.</p></div>
+  </div>
+  <p class="lede" style="margin-top:16px">All three attack the same target: the idea that a continuous quantity (a distance, a duration) is built of infinitely many parts. The dichotomy and Achilles are answered by <b>convergent series</b> — infinitely many shrinking steps with a finite sum. The arrow is subtler: it forces a real account of what "motion at an instant" even means, which is precisely the <b>derivative</b> — instantaneous velocity, defined as a limit. Twenty-three centuries after Zeno, the calculus didn't just refute him; it gave back rigorous answers to the exact questions he was the first to ask. ⚑ A "wrong" argument so good it had to invent a branch of mathematics to be properly answered — the highest compliment a paradox can earn.</p>
+</section>
+
+<section>
+  <h2>III · The inventor of the paradox</h2>
+  <p class="note" style="border-color:var(--amber)"><b style="color:var(--amber)">Gate kept on.</b> The honest reading gives Zeno enormous credit while marking the limits. His <b>method is foundational</b>: Aristotle himself called Zeno the inventor of <em>dialectic</em>, and the paradoxes are among the first rigorous <b>proofs by contradiction</b> — assume motion/plurality, derive an absurdity. His confrontation with <b>infinity</b> was 2,000 years ahead of the tools needed to handle it. The honest qualifications: first, the paradoxes are <b>not unsolved</b> — for the dichotomy and Achilles, the convergent geometric series (an infinite sum of shrinking terms with a finite total) is a complete and correct resolution, made fully rigorous by Cauchy and Weierstrass in the 1800s; pop claims that "math can't really answer Zeno" are wrong. Second, they are <em>partly</em> alive: the <b>arrow</b> and the broader puzzle of <b>supertasks</b> (completing infinitely many actions in finite time) remain genuinely debated in philosophy of mathematics, so it's not all tidily closed. And third, like his teacher, Zeno's aim was <b>defensive</b> — these are weapons forged to protect [[parmenides]]' unchanging One, not a positive theory of their own, and we read them mostly through Aristotle's reports. Strip all that away and the achievement stands: the man who first made infinity a problem, and whose "impossible" arguments were so sharp they helped summon the calculus into being. ⚑ With Zeno the front of the lineage is whole; the road runs on to its first systematiser. [[parmenides]] ← · next → [[aristotle]] (the science of valid inference).</p>
+</section>
+
+<footer>
+  ZENO OF ELEA · LOGIKĒ · the front · two-layer honest<br>
+  live Achilles &amp; the tortoise (run the infinite stages; the geometric series 1 + 1/10 + 1/100 + … converges to a finite catch-up point — verified) · the dichotomy &amp; the arrow<br>
+  the first systematic proofs by contradiction (dialectic) · the first serious confrontation with infinity · the paradoxes answered, two millennia later, by limits &amp; the calculus<br>
+  ← <a href="https://davidwise01.github.io/parmenides/">Parmenides</a> · next → <a href="https://davidwise01.github.io/aristotle/">Aristotle</a> (the science of valid inference)<br>
+  LOGIKĒ · the lineage of logical mathematics · governor David Lee Wise · CC-BY-ND-4.0
+</footer>
+</div>
+<script>
+"use strict";
+(function(){
+  const $=id=>document.getElementById(id);
+  const RATIO=0.1;            // tortoise speed / achilles speed
+  const HEAD=1;              // head start (in units), catch point = HEAD/(1-RATIO)
+  const CATCH=HEAD/(1-RATIO); // = 1.1111...
+  let stages=[];            // cumulative achilles distance at each stage start
+  let n=0, timer=null;
+  function reset(){ stages=[]; n=0; stop(); draw(); }
+  function addStage(){
+    // stage k: achilles runs to tortoise's previous position; distance increment = HEAD*RATIO^k
+    const inc = HEAD*Math.pow(RATIO,n);
+    const prev = stages.length? stages[stages.length-1] : 0;
+    stages.push(prev+inc);
+    n++;
+  }
+  function draw(){
+    const W=520, x0=30, span=W-60, scale=span/ (CATCH*1.08);
+    const aDist = stages.length? stages[stages.length-1] : 0;
+    const tDist = HEAD + aDist*RATIO; // tortoise position
+    let s='';
+    s+='<line x1="'+x0+'" y1="70" x2="'+(x0+span)+'" y2="70" stroke="#2a3346" stroke-width="2"/>';
+    // catch marker
+    const cx=x0+CATCH*scale;
+    s+='<line x1="'+cx+'" y1="40" x2="'+cx+'" y2="80" stroke="#7fe0a0" stroke-width="1.5" stroke-dasharray="3 3"/>';
+    s+='<text x="'+cx+'" y="34" text-anchor="middle" font-family="monospace" font-size="10" fill="#7fe0a0">catch</text>';
+    // achilles
+    const ax=x0+aDist*scale;
+    s+='<circle cx="'+ax+'" cy="70" r="7" fill="#5ad1ff"/><text x="'+ax+'" y="92" text-anchor="middle" font-family="monospace" font-size="10" fill="#a7e6ff">Achilles</text>';
+    // tortoise
+    const tx=x0+tDist*scale;
+    s+='<circle cx="'+tx+'" cy="70" r="5" fill="#d9b66a"/><text x="'+tx+'" y="58" text-anchor="middle" font-family="monospace" font-size="10" fill="#f0d79a">tortoise</text>';
+    $('race').innerHTML=s;
+    // series bars
+    let bars='';
+    for(let k=0;k<Math.max(n,1);k++){ const inc=HEAD*Math.pow(RATIO,k); const h=Math.max(2,inc*scale*0.9*1.6); bars+='<div class="seg" style="height:'+Math.min(64,h)+'px;width:'+Math.max(3,inc*scale*0.6)+'px"></div>'; }
+    $('ser').innerHTML = n? bars : '';
+    $('sN').textContent=n;
+    $('sD').textContent=aDist.toFixed(6);
+    $('sLim').textContent=CATCH.toFixed(4)+' (= 10/9)';
+  }
+  function stepOne(){ if(n>=24){stop();return;} addStage(); draw(); }
+  function run(){ if(timer){stop();return;} $('run').classList.add('on');$('run').textContent='pause ⏸'; timer=setInterval(()=>{ if(n>=24){stop();return;} stepOne(); },240); }
+  function stop(){ if(timer){clearInterval(timer);timer=null;} const b=$('run'); if(b){b.classList.remove('on');b.textContent='run ▶';} }
+  $('run').onclick=run; $('step').onclick=()=>{stop();stepOne();}; $('reset').onclick=reset;
+  reset();
+})();
+</script>
+</body>
+</html>
